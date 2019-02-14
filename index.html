@@ -1,0 +1,39 @@
+<html>
+    <head>
+		<script src="jquery-3.3.1.min.js"></script>
+        <style>
+            #contenedor{width:324px;height:324px;position:relative;}
+			#lienzo,#caminito,#vista{position:absolute;top:0px;left:0px;}
+        </style>
+    </head>
+    <body>
+        <div id="contenedor">
+            <canvas id="caminito" width="1024px" height="512px"></canvas>
+        <canvas id="lienzo" width="1024px" height="512px"></canvas>
+		<canvas id="vista" width="1024px" height="512px"></canvas>
+        <div id="ajax"></div>
+        </div>
+        <script>
+        
+			var contexto = document.getElementById("lienzo").getContext("2d")
+			
+			var posx = 0;
+			var posy = 512;
+			
+			var velocidad = 30;
+			var angulo = Math.PI/3
+			var gravedad = 1;
+			
+			contexto.fillStyle=  "red";
+			contexto.fillRect(500,500,12,12)
+			contexto.fillStyle = "blue";
+			for(var i = 0;i<100;i++){
+				posx = velocidad*Math.cos(angulo)*i
+				posy = 512-(velocidad*Math.sin(angulo)*i-(gravedad*i*i)/2)
+				contexto.fillRect(posx,posy,3,3)
+				console.log(posx+","+posy)
+			}
+            
+        </script>
+    </body>
+</html>
